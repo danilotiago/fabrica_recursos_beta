@@ -26,4 +26,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Faz o relacionamento que verifica se um usuario esta verificado.
+     * Cada usuario vai ter apenas uma verificacao (codigo de verificacao)
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function verifyUser()
+    {
+        return $this->hasOne(VerifyUser::class);
+    }
 }
